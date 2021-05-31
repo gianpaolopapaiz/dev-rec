@@ -6,7 +6,7 @@ class CreateProposals < ActiveRecord::Migration[6.0]
       t.float :price
       t.date :estimated_date
       t.text :details
-      t.string :status
+      t.string :status, :default => "pending"
 
       t.timestamps
     end

@@ -4,7 +4,8 @@ class CreateOffers < ActiveRecord::Migration[6.0]
       t.references :customer, null: false, foreign_key: true
       t.text :description
       t.date :target_date
-      t.boolean :open
+      t.boolean :open, :boolean, :default => true
+
 
       t.timestamps
     end

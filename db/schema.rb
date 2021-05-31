@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_31_201054) do
+ActiveRecord::Schema.define(version: 2021_05_31_204954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,9 +50,11 @@ ActiveRecord::Schema.define(version: 2021_05_31_201054) do
     t.bigint "customer_id", null: false
     t.text "description"
     t.date "target_date"
-    t.boolean "open"
+    t.boolean "open", default: true
+    t.boolean "boolean", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
     t.index ["customer_id"], name: "index_offers_on_customer_id"
   end
 
@@ -62,7 +64,7 @@ ActiveRecord::Schema.define(version: 2021_05_31_201054) do
     t.float "price"
     t.date "estimated_date"
     t.text "details"
-    t.string "status"
+    t.string "status", default: "pending"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["developer_id"], name: "index_proposals_on_developer_id"
