@@ -10,9 +10,66 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2021_05_31_201054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "customers", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "phone"
+    t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "developers", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.text "skills"
+    t.integer "age"
+    t.integer "years_experience"
+    t.string "github_url"
+    t.index ["email"], name: "index_developers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.text "description"
+    t.date "target_date"
+    t.boolean "open"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_offers_on_customer_id"
+  end
+
+  create_table "proposals", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "developer_id", null: false
+    t.float "price"
+    t.date "estimated_date"
+    t.text "details"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["developer_id"], name: "index_proposals_on_developer_id"
+    t.index ["offer_id"], name: "index_proposals_on_offer_id"
+  end
+
+  add_foreign_key "offers", "customers"
+  add_foreign_key "proposals", "developers"
+  add_foreign_key "proposals", "offers"
 end
