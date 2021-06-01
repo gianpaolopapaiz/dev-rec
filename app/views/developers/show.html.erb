@@ -1,0 +1,68 @@
+<h1> Developer Dashboard</h1>
+<h3>My info:</h3>
+<p>Name: <%= current_developer.name %></p>
+<p>Age: <%= current_developer.age %></p>
+<p>Github: <%= current_developer.github_url %></p>
+<p>Skills: <%= current_developer.skills %></p>
+<p>Years of Experience: <%= current_developer.years_experience %></p>
+
+<h3>All proposals:</h3>
+<% if current_developer.proposals.length < 1 %>
+  <p>(No proposals sent yet!)</p>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Offer title</th>
+        <th scope="col">Price</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% current_developer.proposals.each_with_index do |proposal, index| %>
+        <tr>
+          <th scope="row"><%= index + 1 %></th>
+          <td><%= proposal.offer.title %></td>
+          <td><%= proposal.price %></td>
+          <td><%= proposal.status %></td>
+          <td>
+            <%#= link_to 'show', customer_offer_path(current_customer, offer), class: 'btn btn-primary'  %>
+            <%#= link_to 'remove', offer_path(offer), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger'  %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<h3>Available offers:</h3>
+<% if @offers.length < 1 %>
+  <p>(No offers available yet!)</p>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Target_date</th>
+        <th scope="col">Description</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @offers.each_with_index do |offer, index| %>
+        <tr>
+          <th scope="row"><%= index + 1 %></th>
+          <td><%= offer.title %></td>
+          <td><%= offer.target_date %></td>
+          <td><%= offer.description %></td>
+          <td>
+            <%= link_to 'Send Proposal',  new_offer_proposal_path(offer), class: 'btn btn-primary'  %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

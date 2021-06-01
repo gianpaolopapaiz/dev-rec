@@ -1,0 +1,8 @@
+<h1>Creating proposal</h1>
+
+<%= simple_form_for [@offer, @proposal] do |f| %>
+  <%= f.input :details %>
+  <%= f.input :estimated_date %>
+  <%= f.input :price %>
+  <%= f.submit %>
+<% end %>
