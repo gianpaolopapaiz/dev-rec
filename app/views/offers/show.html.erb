@@ -1,0 +1,23 @@
+<%= link_to 'Back to offers',customer_path(current_customer) %>
+<h1>Title: <%= @offer.title %></h1>
+<p>Target date: <%= @offer.target_date %></p>
+<p>Description: <%= @offer.description %></p>
+
+<h4>Proposals</h4>
+
+<% if @offer.proposals.length < 1 %>
+  <p>(No proposals received yet!)</p>
+<% else %>
+  <% @offer.proposals.each_with_index do |proposal, index| %>
+    <div>
+      <p><%= index + 1 %></p>
+      <p><%= proposal.details %></p>
+      <p><%= proposal.price %></p>
+      <p><%= proposal.estimated_date %></p>
+      <p><%= proposal.developer.name %></p>
+      <p><%= proposal.developer.skills %></p>
+      <p><%= proposal.developer.years_experience %></p>
+      <p><%= proposal.developer.github_url %></p>
+    </div>
+  <% end %>
+<% end %>

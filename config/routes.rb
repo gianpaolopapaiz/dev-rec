@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   devise_for :customers, except: [:index] do
-    resources :offers, except: [:index]
+  end
+  resources :customers, only: [:show] do
+    resources :offers, except: [:index, :destroy]
   end
 
   devise_for :developers, except: [:edit, :update]
 
-  resources :offers, only: [] do
+  resources :offers, only: [:destroy] do
     resources :proposals, only: [:new, :create]
   end
 
