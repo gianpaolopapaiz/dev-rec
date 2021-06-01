@@ -16,4 +16,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :skills, :years_experience, :github_url, :age, :phone])
   end
 
+  def after_sign_in_path_for(resource)
+    if resource.is_a?(Customer)     
+      customer_path(current_customer)
+    else
+      developer_path(current_developer)
+    end
+  end
+
 end
