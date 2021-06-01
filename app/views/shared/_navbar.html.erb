@@ -13,6 +13,9 @@
 
       <% if customer_signed_in? %>
         <li class="nav-item dropdown">
+          <%= link_to(root_path) do %>
+            <i class="fa fa-home"></i>
+          <% end %>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Customer Page", customer_path(current_customer), class: "dropdown-item" %>
@@ -21,6 +24,9 @@
         </li>
       <% elsif developer_signed_in? %>
         <li class="nav-item dropdown">
+          <%= link_to(root_path) do %>
+            <i class="fa fa-home"></i>
+          <% end %>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Developer Page", developer_path(current_developer), class: "dropdown-item" %>
@@ -29,6 +35,9 @@
         </li>
       <% else %>
         <li class="nav-item dropdown">
+          <%= link_to(root_path) do %>
+            <i class="fa fa-home"></i>
+          <% end %>
           <%= link_to "Login", "#", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
