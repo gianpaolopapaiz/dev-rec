@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :developers, except: [:edit, :update]
+  resources :developers, only: [:show]
 
   resources :offers, only: [:destroy] do
     resources :proposals, only: [:new, :create]
