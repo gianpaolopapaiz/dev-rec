@@ -50,8 +50,7 @@ ActiveRecord::Schema.define(version: 2021_05_31_204954) do
     t.bigint "customer_id", null: false
     t.text "description"
     t.date "target_date"
-    t.boolean "open", default: true
-    t.boolean "boolean", default: true
+    t.boolean "open"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
@@ -64,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_05_31_204954) do
     t.float "price"
     t.date "estimated_date"
     t.text "details"
-    t.string "status", default: "pending"
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["developer_id"], name: "index_proposals_on_developer_id"
