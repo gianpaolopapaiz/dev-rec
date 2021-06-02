@@ -16,14 +16,22 @@
 
         <h2 class="banner-heading pb-4">Accelerate your project development with the most prepared developers!</h2>
         <h2 class="banner-content">Receive proposals from for the best professionals and contract the one that better address your needs.</h2>
-        <a href="#" class="banner-button text-white mr-3" title="Publish">Publish your Offer</a>
-        <a href="#" class="banner-button demo text-white " title="Access">Developers Page</a>
-
+        
+        <% if customer_signed_in? %>
+          <%= link_to "Publish your Offer", customer_path(current_customer), class: "banner-button demo text-white " %>
+        <% else %>
+          <%= link_to "Publish your Offer", new_customer_session_path, class: "banner-button demo text-white " %>
+        <% end %>
+        
+        <% if developer_signed_in? %>
+          <%= link_to "Developers Page", developer_path(current_developer), class: "banner-button demo text-white " %>
+        <% else %>
+          <%= link_to "Developers Page", new_developer_session_path, class: "banner-button demo text-white " %>
+        <% end %>
       </div>
     </div>
     <div class="home-image col-12 col-md-3 col-lg-5">
-      
-    </div>
+    </div>  
   </div>
 </div>
 
