@@ -9,17 +9,25 @@
   <p>(No proposals received yet!)</p>
 <% else %>
   <% @offer.proposals.each_with_index do |proposal, index| %>
-    <div>
-      <p><%= index + 1 %></p>
-      <p><%= proposal.details %></p>
-      <p><%= proposal.price %></p>
-      <p><%= proposal.estimated_date %></p>
-      <p><%= proposal.developer.name %></p>
-      <p><%= proposal.developer.skills %></p>
-      <p><%= proposal.developer.years_experience %></p>
-      <p><%= proposal.developer.github_url %></p>
-      <p><%= proposal.status %></p>
-      <p><%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal) if @offer.offer_open %></p>
+ 
+ 
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-centered">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><strong><%= index + 1 %></strong></h5>
+        <li class="card-text"><%= proposal.details %></li>
+        <li><%= proposal.price %></li>
+        <li><%= proposal.estimated_date %></li>
+        <li><%= proposal.developer.name %></li>
+        <li><%= proposal.developer.skills %></li>
+        <li><%= proposal.developer.years_experience %></li>
+        <li><%= proposal.developer.github_url %></li>
+        <li><%= proposal.status %></li>
+        <li><%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal) if @offer.offer_open %></li>
+
+      </div>
     </div>
+  </div>
+  
   <% end %>
 <% end %>
