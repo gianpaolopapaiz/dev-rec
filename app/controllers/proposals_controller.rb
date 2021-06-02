@@ -20,6 +20,22 @@ class ProposalsController < ApplicationController
     end
   end
 
+  def accept_proposal
+    accepted_proposal = Proposal.find(params[:proposal_id])
+    offer = accepted_proposal.offer
+    customer = offer.customer
+    offer.proposals.each do |proposal|
+      if proposal == accepted_proposal
+        proposal.status = 'accepted'
+      else
+        proposal.status = 'rejected'
+      end
+      proposal.save
+    end
+    offer.open = false
+    redirect_to customer_offer_path(customer, offer)
+  end
+
   private
 
   def proposal_params

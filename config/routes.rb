@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :customers, except: [:index] do
-  end
+  
+
+  devise_for :customers, except: [:index]
+
   resources :customers, only: [:show] do
     resources :offers, except: [:index, :destroy]
   end
@@ -11,9 +13,11 @@ Rails.application.routes.draw do
   resources :offers, only: [:destroy] do
     resources :proposals, only: [:new, :create]
   end
-
-  resources :proposals, only: [:show, :delete]
-  put '/accept_proposal', to: 'offers#accept_proposal', as: 'accept_proposal'
+  
+  resources :proposals, only: [:show, :delete] do
+    get '/accept_proposal', to: 'proposals#accept_proposal', as: 'accept_proposal'
+  end
+  
 
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
