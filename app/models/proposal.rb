@@ -3,5 +3,5 @@ class Proposal < ApplicationRecord
   belongs_to :developer
 
   validates :price, :estimated_date, :details, presence: true
-  validates :status, inclusion: { in: %w[pending accepeted rejected]}
+  validates :status, inclusion: { in: %w[pending accepted rejected]}
 end

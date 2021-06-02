@@ -22,10 +22,6 @@ class OffersController < ApplicationController
     @offer.destroy
     redirect_to customer_path(@offer.customer)
   end
-  
-
-  def accept_proposal
-  end
 
   private
 
