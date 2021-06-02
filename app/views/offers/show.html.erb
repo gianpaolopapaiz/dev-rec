@@ -19,7 +19,7 @@
       <p><%= proposal.developer.years_experience %></p>
       <p><%= proposal.developer.github_url %></p>
       <p><%= proposal.status %></p>
-      <p><%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal)%></p>
+      <p><%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal) if @offer.offer_open %></p>
     </div>
   <% end %>
 <% end %>

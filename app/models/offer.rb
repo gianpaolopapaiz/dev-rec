@@ -3,6 +3,6 @@ class Offer < ApplicationRecord
   has_many :proposals, dependent: :destroy
   has_many :developers, through: :proposals
   
-  validates :description, :target_date, :open, :title, presence: :true
+  validates :description, :target_date, :title, presence: true
 
 end
