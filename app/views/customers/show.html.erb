@@ -1,37 +1,65 @@
-<h1>Offers status</h1>
-<p><%= link_to 'Add offer', new_customer_offer_path(current_customer) %></p>
+<div class="container">
+  <h1>Customer Dashboard</h1>
+  <p><%= link_to 'Add offer', new_customer_offer_path(current_customer), class: 'btn btn-primary' %></p>
 
-<% if current_customer.offers.length < 1 %>
-  <p>(No offer created yet!)</p>
-<% else %>
-  <h2>All offers:</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Title</th>
-        <th scope="col">Target Date</th>
-        <th scope="col">Proposals</th>
-        <th scope="col">Open</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% current_customer.offers.each_with_index do |offer, index| %>
+  <% if current_customer.offers.length < 1 %>
+    <p>(No offer created yet!)</p>
+  <% else %>
+    <br>
+    <h3>My offers</h3>
+    <br>
+    <h4>Open(<%= current_customer.offers.where(offer_open: true).length %>):</h4>
+    <table class="table">
+      <thead>
         <tr>
-          <th scope="row"><%= index + 1 %></th>
-          <td><%= offer.title %></td>
-          <td><%= offer.target_date %></td>
-          <td><%= offer.proposals.count %></td>
-          <td><%= offer.offer_open %></td>
-          <td>
-            <%= link_to 'show', customer_offer_path(current_customer, offer), class: 'btn btn-primary'  %>
-            <%= link_to 'remove', offer_path(offer), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger'  %>
-          </td>
+          <th scope="col">Title</th>
+          <th scope="col">Target Date</th>
+          <th scope="col">Proposals</th>
+          <th scope="col">Options</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
- 
-<% end %>
-<%= link_to "Back to Home", root_path %>
+      </thead>
+      <tbody>
+        <% current_customer.offers.each do |offer| %>
+          <% if offer.offer_open %>
+          <tr>
+            <td><%= offer.title %></td>
+            <td><%= offer.target_date %></td>
+            <td><%= offer.proposals.count %></td>           
+            <td>
+              <%= link_to 'more', customer_offer_path(current_customer, offer), class: 'btn btn-primary'  %>
+              <%= link_to 'remove', offer_path(offer), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger'  %>
+            </td>
+          </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+    <h4>Closed(<%= current_customer.offers.where(offer_open: false).length %>):</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Target Date</th>
+          <th scope="col">Proposals</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% current_customer.offers.each do |offer| %>
+          <% if !offer.offer_open %>
+          <tr>
+            <td><%= offer.title %></td>
+            <td><%= offer.target_date %></td>
+            <td><%= offer.proposals.count %></td>           
+            <td>
+              <%= link_to 'more', customer_offer_path(current_customer, offer), class: 'btn btn-primary'  %>
+              <%= link_to 'remove', offer_path(offer), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger disabled' %>
+            </td>
+          </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
