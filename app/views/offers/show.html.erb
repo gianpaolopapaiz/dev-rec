@@ -1,33 +1,98 @@
-<%= link_to 'Back to offers',customer_path(current_customer) %>
-<h1>Title: <%= @offer.title %></h1>
-<p>Target date: <%= @offer.target_date %></p>
-<p>Description: <%= @offer.description %></p>
-
-<h4>Proposals</h4>
-
-<% if @offer.proposals.length < 1 %>
-  <p>(No proposals received yet!)</p>
-<% else %>
-  <% @offer.proposals.each_with_index do |proposal, index| %>
- 
- 
-  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-centered">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><strong><%= index + 1 %></strong></h5>
-        <li class="card-text"><%= proposal.details %></li>
-        <li><%= proposal.price %></li>
-        <li><%= proposal.estimated_date %></li>
-        <li><%= proposal.developer.name %></li>
-        <li><%= proposal.developer.skills %></li>
-        <li><%= proposal.developer.years_experience %></li>
-        <li><%= proposal.developer.github_url %></li>
-        <li><%= proposal.status %></li>
-        <li><%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal) if @offer.offer_open %></li>
-
-      </div>
+<div class="container">
+<p><%= link_to 'Back to dashboard',customer_path(current_customer) %></p>
+  
+    <h2>Offer Details</h2>
+  <div class="card-product">
+    <div class="card-product-infos">
+    
+      <h3><%= @offer.title %></h3>
+      <p>Target date: <%= @offer.target_date %></p>
+      <p>Description: <%= @offer.description %></p>
     </div>
   </div>
-  
+
+
+<% if @offer.offer_open %>
+  <h4>Received Proposals(<%=@offer.proposals.length%>)</h4>
+
+  <% if @offer.proposals.length < 1 %>
+    <p>(No proposals received yet!)</p>
+  <% else %>
+    <% @offer.proposals.each do |proposal| %>
+      <div class="card-product">
+        <% if proposal.developer.photo.attached? %>
+          <%= cl_image_tag proposal.developer.photo.key, crop: :fill %>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> 
+        <% end %>
+        <div class="card-product-infos">
+          <h2><%= proposal.developer.name %> (<%= proposal.developer.email %>) </h2>
+          <p>Github: <%= proposal.developer.github_url %></p>
+          <p>Experience: <%= proposal.developer.years_experience %> years</p>
+          <p>Skills: <%= proposal.developer.skills %></p>
+          <p>Price: $<%= proposal.price %> | Estimated Date: <%= proposal.estimated_date %></p>
+          <p><%= proposal.details %></p>
+          <p></p>
+          <p>Status: <%= proposal.status %></p>
+          <%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal), class: 'btn btn-primary' if @offer.offer_open %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
+
+<% else %>
+  <h4>Accepted Proposal</h4>
+  <% @offer.proposals.each do |proposal| %>
+    
+    <% if proposal.status == 'accepted' %>
+      <div class="card-product">
+        <% if proposal.developer.photo.attached? %>
+          <%= cl_image_tag proposal.developer.photo.key, crop: :fill %>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> 
+        <% end %>
+        <div class="card-product-infos">
+          <h2><%= proposal.developer.name %> (<%= proposal.developer.email %>) </h2>
+          <p>Github: <%= proposal.developer.github_url %></p>
+          <p>Experience: <%= proposal.developer.years_experience %> years</p>
+          <p>Skills: <%= proposal.developer.skills %></p>
+          <p>Price: $<%= proposal.price %> | Estimated Date: <%= proposal.estimated_date %></p>
+          <p><%= proposal.details %></p>
+          <p></p>
+          <p>Status: <%= proposal.status %></p>
+          <%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal), class: 'btn btn-primary' if @offer.offer_open %>
+        </div>
+      </div> 
+    <% end %>  
+  <% end %>
+    
+
+  <h4>Rejected Proposals(<%=@offer.proposals.length - 1%>)</h4>
+  <% @offer.proposals.each do |proposal| %>
+    
+    <% if proposal.status != 'accepted' %>
+      <div class="card-product">
+        <% if proposal.developer.photo.attached? %>
+          <%= cl_image_tag proposal.developer.photo.key, crop: :fill %>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> 
+        <% end %>
+        <div class="card-product-infos">
+          <h2><%= proposal.developer.name %> (<%= proposal.developer.email %>) </h2>
+          <p>Github: <%= proposal.developer.github_url %></p>
+          <p>Experience: <%= proposal.developer.years_experience %> years</p>
+          <p>Skills: <%= proposal.developer.skills %></p>
+          <p>Price: $<%= proposal.price %> | Estimated Date: <%= proposal.estimated_date %></p>
+          <p><%= proposal.details %></p>
+          <p></p>
+          <p>Status: <%= proposal.status %></p>
+          <%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal), class: 'btn btn-primary' if @offer.offer_open %>
+        </div>
+      </div> 
+    <% end %>  
+  <% end %>
+
 <% end %>
+
+
+</div>

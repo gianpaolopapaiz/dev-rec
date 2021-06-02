@@ -32,6 +32,7 @@ class ProposalsController < ApplicationController
       end
       proposal.save
     end
+    offer.offer_open = false
     if offer.save
       redirect_to customer_offer_path(customer, offer)
     else
