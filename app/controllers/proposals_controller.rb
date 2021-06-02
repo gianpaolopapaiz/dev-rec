@@ -32,8 +32,11 @@ class ProposalsController < ApplicationController
       end
       proposal.save
     end
-    offer.open = false
-    redirect_to customer_offer_path(customer, offer)
+    if offer.save
+      redirect_to customer_offer_path(customer, offer)
+    else
+      redirect_to customer_offer_path(customer, offer), notice: 'Unable to update!'
+    end
   end
 
   private

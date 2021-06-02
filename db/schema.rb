@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_06_02_171625) do
 
   # These are extensions that must be enabled in order to support this database
@@ -71,7 +72,7 @@ ActiveRecord::Schema.define(version: 2021_06_02_171625) do
     t.bigint "customer_id", null: false
     t.text "description"
     t.date "target_date"
-    t.boolean "open", default: true
+    t.boolean "offer_open", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
