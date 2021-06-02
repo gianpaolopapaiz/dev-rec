@@ -8,4 +8,5 @@ class Developer < ApplicationRecord
 
   validates :name, :skills, :years_experience, :github_url, :age, presence: true
   validates :name, uniqueness: true
+  has_one_attached :photo
 end

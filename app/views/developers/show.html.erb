@@ -1,11 +1,21 @@
 <h1> Developer Dashboard</h1>
 <h3>My info:</h3>
-<p>Name: <%= current_developer.name %></p>
-<p>Age: <%= current_developer.age %></p>
-<p>Github: <%= current_developer.github_url %></p>
-<p>Skills: <%= current_developer.skills %></p>
-<p>Years of Experience: <%= current_developer.years_experience %></p>
-
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-centered">
+  <div class="card">
+    <div class="card-img-top"><%= cl_image_tag current_developer.photo.key, :width => "300" if current_developer.photo.attached? %> </div>
+        <div class="card-body">
+          <h5 class="card-title"><strong><%= current_developer.name %></strong></h5>
+          <li class="card-text">Skills: <%= current_developer.skills %></li>
+          <li> GitHub: <%= current_developer.github_url %></li>
+          <li>Age: <%= current_developer.age %></li> 
+          <li> Years of Experience: <%= current_developer.years_experience %></li>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
 <h3>All proposals:</h3>
 <% if current_developer.proposals.length < 1 %>
   <p>(No proposals sent yet!)</p>
