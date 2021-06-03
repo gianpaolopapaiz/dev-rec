@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-4">
   <h1>Customer Dashboard</h1>
 
   <div class="card-product">
@@ -18,16 +18,16 @@
       <%= link_to 'Edit', edit_customer_registration_path(current_customer), class: 'btn btn-secondary btn-sm'  %>
       <%= link_to 'Logout', destroy_customer_session_path, method: :delete, class: 'btn btn-secondary btn-sm'  %>
   </p>
-  <br>
-  <br>
-  <p><%= link_to 'Add offer', new_customer_offer_path(current_customer), class: 'btn btn-primary' %></p>
+ 
+  <h3>My offers</h3>
+  
+  <p><%= link_to 'Add offer', new_customer_offer_path(current_customer), class: 'btn btn-primary btn-sm mb-3' %></p>
 
   <% if current_customer.offers.length < 1 %>
     <p>(No offer created yet!)</p>
   <% else %>
-    <br>
-    <h3>My offers</h3>
-    <br>
+    
+    
     <h4>Open(<%= @offers_open.length %>):</h4>
     <table class="table">
       <thead>
@@ -53,7 +53,7 @@
       </tbody>
     </table>
     <br>
-    <h4>Accepted(<%= current_customer.offers.where(offer_open: false).length %>):</h4>
+    <h4>Accepted(<%= @offers_accepted.length %>):</h4>
     <table class="table">
       <thead>
         <tr>
@@ -72,8 +72,6 @@
             <td>
               <%= link_to 'more', customer_offer_path(current_customer, offer), class: 'btn btn-primary'  %>
               <%= link_to 'close', new_proposal_rating_path(offer.proposals.where(status: 'accepted').first), class: 'btn btn-success' %>
-          
-            
             </td>
           </tr>
         <% end %>
