@@ -17,13 +17,12 @@
   </div>
   </div>
 
-  <br>
-  <br>
-  <h1>Rate the Developer</h1>
-
-  <%= simple_form_for [@proposal, @rating] do |f| %>
-  <%= f.input :rating %>
-  <%= f.input :comment %>
-  <%= f.submit%>
-  <% end %>
+  <h2>Rate the Developer</h2>
+  <div class="col-4">
+    <%= simple_form_for [@proposal, @rating] do |f| %>
+    <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>  
+    <%= f.input :comment %>
+    <%= f.button :submit, "Rate", class:"btn btn-primary"%>
+    <% end %>
+  </div>
 </div>
