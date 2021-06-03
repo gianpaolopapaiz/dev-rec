@@ -1,12 +1,31 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: rgb(255, 255, 255);
+  background: white;
+  padding: 0px 20px;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+  padding-right: 100px;
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 80px;
+  width: 40px;
+}
+
+.fa-home {
+  color: orangered;
+  text-shadow: 1px 1px 2px gray;
+  padding: 0px 50px;
+  font-size: 30px;
+}
+
+.avatar {
+  color: orangered;
+  font-size: 20px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
 }
