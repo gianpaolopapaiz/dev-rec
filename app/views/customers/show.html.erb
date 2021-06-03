@@ -85,6 +85,7 @@
           <th scope="col">Title</th>
           <th scope="col">Target Date</th>
           <th scope="col">Proposals</th>
+          <th scope="col">Options</th>
         </tr>
       </thead>
       <tbody>
@@ -92,7 +93,10 @@
           <tr>
             <td><%= offer.title %></td>
             <td><%= offer.target_date %></td>
-            <td><%= offer.proposals.count %></td>           
+            <td><%= offer.proposals.count %></td>
+            <td>
+              <%= link_to 'more', customer_offer_path(current_customer, offer), class: 'btn btn-primary'  %>
+            </td>           
           </tr>
         <% end %>
       </tbody>
