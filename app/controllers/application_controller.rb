@@ -23,5 +23,4 @@ class ApplicationController < ActionController::Base
       developer_path(current_developer)
     end
   end
-
 end
