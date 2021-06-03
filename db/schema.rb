@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_02_175144) do
+ActiveRecord::Schema.define(version: 2021_06_03_173406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_06_02_175144) do
     t.integer "age"
     t.integer "years_experience"
     t.string "github_url"
+    t.integer "rating_avg"
     t.index ["email"], name: "index_developers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true
   end
@@ -91,8 +92,21 @@ ActiveRecord::Schema.define(version: 2021_06_02_175144) do
     t.index ["offer_id"], name: "index_proposals_on_offer_id"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comment"
+    t.bigint "customer_id", null: false
+    t.bigint "developer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_ratings_on_customer_id"
+    t.index ["developer_id"], name: "index_ratings_on_developer_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "offers", "customers"
   add_foreign_key "proposals", "developers"
   add_foreign_key "proposals", "offers"
+  add_foreign_key "ratings", "customers"
+  add_foreign_key "ratings", "developers"
 end
