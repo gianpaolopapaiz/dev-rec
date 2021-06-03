@@ -28,7 +28,7 @@
     <br>
     <h3>My offers</h3>
     <br>
-    <h4>Open(<%= current_customer.offers.where(offer_open: true).length %>):</h4>
+    <h4>Open(<%= @offers_open.length %>):</h4>
     <table class="table">
       <thead>
         <tr>
@@ -39,8 +39,7 @@
         </tr>
       </thead>
       <tbody>
-        <% current_customer.offers.each do |offer| %>
-          <% if offer.offer_open %>
+        <% @offers_open.each do |offer| %>
           <tr>
             <td><%= offer.title %></td>
             <td><%= offer.target_date %></td>
@@ -50,12 +49,11 @@
               <%= link_to 'remove', offer_path(offer), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger'  %>
             </td>
           </tr>
-          <% end %>
         <% end %>
       </tbody>
     </table>
     <br>
-    <h4>Closed(<%= current_customer.offers.where(offer_open: false).length %>):</h4>
+    <h4>Accepted(<%= current_customer.offers.where(offer_open: false).length %>):</h4>
     <table class="table">
       <thead>
         <tr>
@@ -66,20 +64,41 @@
         </tr>
       </thead>
       <tbody>
-        <% current_customer.offers.each do |offer| %>
-          <% if !offer.offer_open %>
+        <% @offers_accepted.each do |offer| %>
           <tr>
             <td><%= offer.title %></td>
             <td><%= offer.target_date %></td>
             <td><%= offer.proposals.count %></td>           
             <td>
               <%= link_to 'more', customer_offer_path(current_customer, offer), class: 'btn btn-primary'  %>
-              <%= link_to 'remove', offer_path(offer), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger disabled' %>
+              <%# <%= link_to 'close', new_proposal_rating_path(offer.proposals.where(status: 'accepted').first), class: 'btn btn-success' %> %>
+          
+            
             </td>
           </tr>
-          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+    <h4>Closed(<%= @offers_closed.length %>):</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Target Date</th>
+          <th scope="col">Proposals</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @offers_closed.each do |offer| %>
+          <tr>
+            <td><%= offer.title %></td>
+            <td><%= offer.target_date %></td>
+            <td><%= offer.proposals.count %></td>           
+          </tr>
         <% end %>
       </tbody>
     </table>
   <% end %>
 </div>
+
