@@ -1,7 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background-color: lightgray;
-  padding: 0px 20px;
+  background-color: rgba(255, 68, 0, 0.5);
+  padding: 0px 150px;
+  h1 {
+    font-family: 'Share Tech Mono', monospace;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -14,7 +17,7 @@
 }
 
 .fa-home {
-  color: orangered;
+  color: black;
   text-shadow: 1px 1px 2px gray;
   padding: 0px 50px;
   font-size: 30px;
@@ -29,3 +32,4 @@
   opacity: 0.6;
   transition: opacity 0.3s ease;
 }
+
