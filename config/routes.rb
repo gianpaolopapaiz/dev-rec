@@ -17,8 +17,9 @@ Rails.application.routes.draw do
   
   resources :proposals, only: [:show, :delete] do
     get '/accept_proposal', to: 'proposals#accept_proposal', as: 'accept_proposal'
+    resources :ratings, only: [:new, :create]
   end
-  
+  resources :ratings, only: [:destroy]
 
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

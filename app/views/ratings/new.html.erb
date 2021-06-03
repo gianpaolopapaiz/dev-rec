@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="card-product">
+  <% if @developer.photo.attached? %>
+      <%= cl_image_tag @developer.photo.key, crop: :fill %>
+  <% else %>
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> 
+  <% end %>
+  <div class="card-product-infos">
+      <h2><%= @developer.name %></h2>
+      <br>
+      <p>Email:<%= @developer.email %></p>
+      <p>GitHub: <%= @developer.github_url %></p>
+      <p>Age: <%= @developer.age %></p> 
+      <p>Experience: <%= @developer.years_experience %> years</p>
+      <p>Skills: 
+      <%= @developer.skills %></p>
+  </div>
+  </div>
+
+  <br>
+  <br>
+  <h1>Rate the Developer</h1>
+
+  <%= simple_form_for [@proposal, @rating] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :comment %>
+  <%= f.submit%>
+  <% end %>
+</div>
