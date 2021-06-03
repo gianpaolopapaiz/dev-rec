@@ -8,4 +8,5 @@ class Customer < ApplicationRecord
   
   validates :name, :phone, presence: :true
   validates :name, uniqueness: true
+  has_one_attached :avatar
 end

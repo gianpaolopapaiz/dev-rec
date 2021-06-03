@@ -15,10 +15,14 @@
       <p>GitHub: <%= current_developer.github_url %></p>
       <p>Age: <%= current_developer.age %></p> 
       <p>Experience: <%= current_developer.years_experience %> years</p>
-      <p>Skills: <%= current_developer.skills %></p>
+      <p>Skills: 
+      <%= current_developer.skills %></p>
     </div>
   </div>
-  
+  <p class="text-right" >
+    <%= link_to 'Edit', edit_developer_registration_path(current_developer), class: 'btn btn-secondary btn-sm'  %>
+    <%= link_to 'Logout', destroy_developer_session_path, method: :delete, class: 'btn btn-secondary btn-sm'  %>
+  </p>  
   <br>
   <br>
   <h3>My proposals:</h3>
@@ -50,9 +54,20 @@
     </table>
   <% end %>
   <br>
-  <h3>Available offers:</h3>
-  <% if @offers.length < 1 %>
-    <p>(No offers available yet!)</p>
+  <h3>Available offers (<%= @available_offers.length %>):</h3>
+    <%= form_tag developer_path(current_developer), method: :get, class: 'form-inline my-3' do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: 'form-control w-25',
+        placeholder: 'Search...'
+      %>
+      <%= submit_tag "Search", class: 'btn btn-primary' %>
+      <% if @query.present? %>
+        <span class='ml-2'> Filtered by: "<strong><%= @query %></strong>" <%= link_to 'X', developer_path(current_developer)  %></span>
+      <% end %>
+    <% end %>
+  <% if @available_offers.length < 1 %>
+    <p>(No offers available!)</p>
   <% else %>
     <table class="table">
       <thead>
@@ -64,7 +79,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @offers.where(offer_open: true).each do |offer| %>
+        <% @available_offers.each do |offer| %>
           <tr>
             <td><%= offer.title %></td>
             <td><%= offer.target_date %></td>

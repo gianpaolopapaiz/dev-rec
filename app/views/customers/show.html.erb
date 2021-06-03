@@ -1,5 +1,25 @@
 <div class="container">
   <h1>Customer Dashboard</h1>
+
+  <div class="card-product">
+    <% if current_customer.avatar.attached? %>
+      <%= cl_image_tag current_customer.avatar.key, crop: :fill %>
+    <% else %>
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> 
+    <% end %>
+    <div class="card-product-infos">
+      <h2><%= current_customer.name %></h2>
+      <br>
+      <p>Email:<%= current_customer.email %></p>
+      <p>Phone: <%= current_customer.phone %></p>
+    </div>
+  </div>
+  <p class="text-right" >
+      <%= link_to 'Edit', edit_customer_registration_path(current_customer), class: 'btn btn-secondary btn-sm'  %>
+      <%= link_to 'Logout', destroy_customer_session_path, method: :delete, class: 'btn btn-secondary btn-sm'  %>
+  </p>
+  <br>
+  <br>
   <p><%= link_to 'Add offer', new_customer_offer_path(current_customer), class: 'btn btn-primary' %></p>
 
   <% if current_customer.offers.length < 1 %>
