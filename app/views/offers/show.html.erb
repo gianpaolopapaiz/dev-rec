@@ -138,13 +138,13 @@
               <% end %>
                 <p class="text-botton"><%= link_to "Comments", developer_ratings_path(proposal.developer) %></p>
             </div>
-            </div>
-            <div class="button-div col-2">
-              <%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal), class: 'btn btn-primary' if @offer.offer_open %>
-            </div>
+          </div>
+          <div class="button-div col-2">
+            <%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal), class: 'btn btn-primary' if @offer.offer_open %>
           </div>
         </div>
-      </div> 
+      </div>
+     
 
     <% end %>  
   <% end %>
