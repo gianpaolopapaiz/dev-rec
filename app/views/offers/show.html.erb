@@ -30,7 +30,7 @@
           <% if proposal.developer.rating_avg %>
             <p>Rating: <%= link_to proposal.developer.rating_avg, developer_ratings_path(proposal.developer) %> / 5.0<p>
           <% else %>
-            <p>Rating: <%= link_to 'none', developer_ratings_path(proposal.developer) %><p>
+            <p>Rating: none<p>
           <% end %>
           <p>Github: <%= proposal.developer.github_url %></p>
           <p>Experience: <%= proposal.developer.years_experience %> years</p>
@@ -61,7 +61,7 @@
           <% if proposal.developer.rating_avg %>
             <p>Rating: <%= link_to proposal.developer.rating_avg, developer_ratings_path(proposal.developer) %> / 5.0<p>
           <% else %>
-            <p>Rating: <%= link_to 'none', developer_ratings_path(proposal.developer) %><p>
+            <p>Rating: none<p>
           <% end %>
           <p>Github: <%= proposal.developer.github_url %></p>
           <p>Experience: <%= proposal.developer.years_experience %> years</p>
@@ -92,7 +92,7 @@
           <% if proposal.developer.rating_avg %>
             <p>Rating: <%= link_to proposal.developer.rating_avg, developer_ratings_path(proposal.developer) %> / 5.0<p>
           <% else %>
-            <p>Rating: <%= link_to 'none', developer_ratings_path(proposal.developer) %><p>
+            <p>Rating: none<p>
           <% end %>
           <p>Github: <%= proposal.developer.github_url %></p>
           <p>Experience: <%= proposal.developer.years_experience %> years</p>
