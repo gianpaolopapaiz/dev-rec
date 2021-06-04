@@ -31,26 +31,29 @@
             <div class="texto-linha col-7">
                   <h2><%= proposal.developer.name %></h2>
                   <br>
-                  <p><strong>Email: </strong><%= proposal.developer.email %></p>
-                  <p><strong>GitHub: </strong><%= proposal.developer.github_url %></p>
-                  <p><strong>Age:</strong> <%= proposal.developer.age %></p> 
-                  <p><strong>Experience:</strong> <%= proposal.developer.years_experience %> years</p>
+                  <p><strong>Email: </strong><%= proposal.developer.email %> | <strong>GitHub: </strong><%= proposal.developer.github_url %></p>
+                  <p><strong>Age:</strong> <%= proposal.developer.age %> | <strong>Experience:</strong> <%= proposal.developer.years_experience %> years</p> 
                   <p><strong>Skills: </strong> 
                   <%= proposal.developer.skills %></p>
-            </div>      
-              <div class="star-div col-3">
-                <% if proposal.developer.rating_avg %>
-                  <div class="star-ratings-css" title="<%=(proposal.developer.rating_avg * 2 / 10).round(1)%>"></div>
-                <% else %>
-                  <p>Rating: none<p>
-                <% end %>
-                  <p class="text-botton"><%= link_to "Comments", developer_ratings_path(proposal.developer) %></p>
-              </div>
+
               <p>Price: $<%= proposal.price %> | Estimated Date: <%= proposal.estimated_date %></p>
               <p><%= proposal.details %></p>
-              <p></p>
               <p>Status: <%= proposal.status %></p>
+
+            </div>      
+            <div class="star-div col-3">
+              <% if proposal.developer.rating_avg %>
+                <div class="star-ratings-css" title="<%=(proposal.developer.rating_avg * 2 / 10).round(1)%>"></div>
+              <% else %>
+                <p>Rating: none<p>
+              <% end %>
+                <p class="text-botton"><%= link_to "Comments", developer_ratings_path(proposal.developer) %></p>
+            </div>
+
+            <div class="button-div col-2">
               <%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal), class: 'btn btn-primary' if @offer.offer_open %>
+            </div>
+
           </div>
         </div>
       </div>
@@ -72,28 +75,29 @@
         <div class="card-product-infos">
           <div class="card-linha row">
             <div class="texto-linha col-7">
-                  <h2><%= proposal.developer.name %></h2>
-                  <br>
-                  <p><strong>Email: </strong><%= proposal.developer.email %></p>
-                  <p><strong>GitHub: </strong><%= proposal.developer.github_url %></p>
-                  <p><strong>Age:</strong> <%= proposal.developer.age %></p> 
-                  <p><strong>Experience:</strong> <%= proposal.developer.years_experience %> years</p>
-                  <p><strong>Skills: </strong> 
-                  <%= proposal.developer.skills %></p>
+              <h2><%= proposal.developer.name %></h2>
+              <br>
+              <p><strong>Email: </strong><%= proposal.developer.email %> | <strong>GitHub: </strong><%= proposal.developer.github_url %></p>
+              <p><strong>Age:</strong> <%= proposal.developer.age %> | <strong>Experience:</strong> <%= proposal.developer.years_experience %> years</p> 
+              <p><strong>Skills: </strong> 
+              <%= proposal.developer.skills %></p>
+
+              <p>Price: $<%= proposal.price %> | Estimated Date: <%= proposal.estimated_date %></p>
+              <p><%= proposal.details %></p>
+              <p>Status: <%= proposal.status %></p>
+
             </div>      
-              <div class="star-div col-3">
-                <% if proposal.developer.rating_avg %>
-                  <div class="star-ratings-css" title="<%=(proposal.developer.rating_avg * 2 / 10).round(1)%>"></div>
-                <% else %>
-                  <p>Rating: none<p>
-                <% end %>
-                  <p class="text-botton"><%= link_to "Comments", developer_ratings_path(proposal.developer) %></p>
-              </div>
-          <p>Price: $<%= proposal.price %> | Estimated Date: <%= proposal.estimated_date %></p>
-          <p><%= proposal.details %></p>
-          <p></p>
-          <p>Status: <%= proposal.status %></p>
-          <%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal), class: 'btn btn-primary' if @offer.offer_open %>
+            <div class="star-div col-3">
+              <% if proposal.developer.rating_avg %>
+                <div class="star-ratings-css" title="<%=(proposal.developer.rating_avg * 2 / 10).round(1)%>"></div>
+              <% else %>
+                <p>Rating: none<p>
+              <% end %>
+                <p class="text-botton"><%= link_to "Comments", developer_ratings_path(proposal.developer) %></p>
+            </div>
+             <div class="button-div col-2">
+              <%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal), class: 'btn btn-primary' if @offer.offer_open %>
+             </div>
         </div>
       </div> 
     </div>
@@ -116,28 +120,29 @@
         <div class="card-product-infos">
           <div class="card-linha row">
             <div class="texto-linha col-7">
-                  <h2><%= proposal.developer.name %></h2>
-                  <br>
-                  <p><strong>Email: </strong><%= proposal.developer.email %></p>
-                  <p><strong>GitHub: </strong><%= proposal.developer.github_url %></p>
-                  <p><strong>Age:</strong> <%= proposal.developer.age %></p> 
-                  <p><strong>Experience:</strong> <%= proposal.developer.years_experience %> years</p>
-                  <p><strong>Skills: </strong> 
-                  <%= proposal.developer.skills %></p>
+              <h2><%= proposal.developer.name %></h2>
+              <br>
+              <p><strong>Email: </strong><%= proposal.developer.email %> | <strong>GitHub: </strong><%= proposal.developer.github_url %></p>
+              <p><strong>Age:</strong> <%= proposal.developer.age %> | <strong>Experience:</strong> <%= proposal.developer.years_experience %> years</p> 
+              <p><strong>Skills: </strong> 
+              <%= proposal.developer.skills %></p>
+              <p>Price: $<%= proposal.price %> | Estimated Date: <%= proposal.estimated_date %></p>
+              <p><%= proposal.details %></p>
+              <p>Status: <%= proposal.status %></p>
             </div>      
-              <div class="star-div col-3">
-                <% if proposal.developer.rating_avg %>
-                  <div class="star-ratings-css" title="<%=(proposal.developer.rating_avg * 2 / 10).round(1)%>"></div>
-                <% else %>
-                  <p>Rating: none<p>
-                <% end %>
-                  <p class="text-botton"><%= link_to "Comments", developer_ratings_path(current_developer) %></p>
-              </div>
-          <p>Price: $<%= proposal.price %> | Estimated Date: <%= proposal.estimated_date %></p>
-          <p><%= proposal.details %></p>
-          <p></p>
-          <p>Status: <%= proposal.status %></p>
-          <%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal), class: 'btn btn-primary' if @offer.offer_open %>
+            <div class="star-div col-3">
+              <% if proposal.developer.rating_avg %>
+                <div class="star-ratings-css" title="<%=(proposal.developer.rating_avg * 2 / 10).round(1)%>"></div>
+              <% else %>
+                <p>Rating: none<p>
+              <% end %>
+                <p class="text-botton"><%= link_to "Comments", developer_ratings_path(current_developer) %></p>
+            </div>
+            </div>
+            <div class="button-div col-2">
+              <%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal), class: 'btn btn-primary' if @offer.offer_open %>
+            </div>
+          </div>
         </div>
       </div> 
 
