@@ -19,6 +19,7 @@
     <p>(No proposals received yet!)</p>
   <% else %>
     <% @offer.proposals.each do |proposal| %>
+
       <div class="card-product">
         <% if proposal.developer.photo.attached? %>
           <%= cl_image_tag proposal.developer.photo.key, crop: :fill %>
@@ -26,20 +27,31 @@
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> 
         <% end %>
         <div class="card-product-infos">
-          <h2><%= proposal.developer.name %> (<%= proposal.developer.email %>) </h2>
-          <% if proposal.developer.rating_avg %>
-            <p>Rating: <%= link_to proposal.developer.rating_avg, developer_ratings_path(proposal.developer) %> / 5.0<p>
-          <% else %>
-            <p>Rating: none<p>
-          <% end %>
-          <p>Github: <%= proposal.developer.github_url %></p>
-          <p>Experience: <%= proposal.developer.years_experience %> years</p>
-          <p>Skills: <%= proposal.developer.skills %></p>
-          <p>Price: $<%= proposal.price %> | Estimated Date: <%= proposal.estimated_date %></p>
-          <p><%= proposal.details %></p>
-          <p></p>
-          <p>Status: <%= proposal.status %></p>
-          <%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal), class: 'btn btn-primary' if @offer.offer_open %>
+          <div class="card-linha row">
+            <div class="texto-linha col-7">
+                  <h2><%= proposal.developer.name %></h2>
+                  <br>
+                  <p><strong>Email: </strong><%= proposal.developer.email %></p>
+                  <p><strong>GitHub: </strong><%= proposal.developer.github_url %></p>
+                  <p><strong>Age:</strong> <%= proposal.developer.age %></p> 
+                  <p><strong>Experience:</strong> <%= proposal.developer.years_experience %> years</p>
+                  <p><strong>Skills: </strong> 
+                  <%= proposal.developer.skills %></p>
+            </div>      
+              <div class="star-div col-3">
+                <% if proposal.developer.rating_avg %>
+                  <div class="star-ratings-css" title="<%=(proposal.developer.rating_avg * 2 / 10).round(1)%>"></div>
+                <% else %>
+                  <p>Rating: none<p>
+                <% end %>
+                  <p class="text-botton"><%= link_to "Comments", developer_ratings_path(current_developer) %></p>
+              </div>
+              <p>Price: $<%= proposal.price %> | Estimated Date: <%= proposal.estimated_date %></p>
+              <p><%= proposal.details %></p>
+              <p></p>
+              <p>Status: <%= proposal.status %></p>
+              <%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal), class: 'btn btn-primary' if @offer.offer_open %>
+          </div>
         </div>
       </div>
     <% end %>
@@ -50,6 +62,7 @@
   <% @offer.proposals.each do |proposal| %>
     
     <% if proposal.status == 'accepted' %>
+
       <div class="card-product">
         <% if proposal.developer.photo.attached? %>
           <%= cl_image_tag proposal.developer.photo.key, crop: :fill %>
@@ -57,15 +70,25 @@
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> 
         <% end %>
         <div class="card-product-infos">
-          <h2><%= proposal.developer.name %> (<%= proposal.developer.email %>) </h2>
-          <% if proposal.developer.rating_avg %>
-            <p>Rating: <%= link_to proposal.developer.rating_avg, developer_ratings_path(proposal.developer) %> / 5.0<p>
-          <% else %>
-            <p>Rating: none<p>
-          <% end %>
-          <p>Github: <%= proposal.developer.github_url %></p>
-          <p>Experience: <%= proposal.developer.years_experience %> years</p>
-          <p>Skills: <%= proposal.developer.skills %></p>
+          <div class="card-linha row">
+            <div class="texto-linha col-7">
+                  <h2><%= proposal.developer.name %></h2>
+                  <br>
+                  <p><strong>Email: </strong><%= proposal.developer.email %></p>
+                  <p><strong>GitHub: </strong><%= proposal.developer.github_url %></p>
+                  <p><strong>Age:</strong> <%= proposal.developer.age %></p> 
+                  <p><strong>Experience:</strong> <%= proposal.developer.years_experience %> years</p>
+                  <p><strong>Skills: </strong> 
+                  <%= proposal.developer.skills %></p>
+            </div>      
+              <div class="star-div col-3">
+                <% if proposal.developer.rating_avg %>
+                  <div class="star-ratings-css" title="<%=(proposal.developer.rating_avg * 2 / 10).round(1)%>"></div>
+                <% else %>
+                  <p>Rating: none<p>
+                <% end %>
+                  <p class="text-botton"><%= link_to "Comments", developer_ratings_path(proposal.developer) %></p>
+              </div>
           <p>Price: $<%= proposal.price %> | Estimated Date: <%= proposal.estimated_date %></p>
           <p><%= proposal.details %></p>
           <p></p>
@@ -73,6 +96,7 @@
           <%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal), class: 'btn btn-primary' if @offer.offer_open %>
         </div>
       </div> 
+    </div>
     <% end %>  
   <% end %>
     
@@ -81,6 +105,7 @@
   <% @offer.proposals.each do |proposal| %>
     
     <% if proposal.status != 'accepted' %>
+
       <div class="card-product">
         <% if proposal.developer.photo.attached? %>
           <%= cl_image_tag proposal.developer.photo.key, crop: :fill %>
@@ -88,15 +113,25 @@
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> 
         <% end %>
         <div class="card-product-infos">
-          <h2><%= proposal.developer.name %> (<%= proposal.developer.email %>) </h2>
-          <% if proposal.developer.rating_avg %>
-            <p>Rating: <%= link_to proposal.developer.rating_avg, developer_ratings_path(proposal.developer) %> / 5.0<p>
-          <% else %>
-            <p>Rating: none<p>
-          <% end %>
-          <p>Github: <%= proposal.developer.github_url %></p>
-          <p>Experience: <%= proposal.developer.years_experience %> years</p>
-          <p>Skills: <%= proposal.developer.skills %></p>
+          <div class="card-linha row">
+            <div class="texto-linha col-7">
+                  <h2><%= proposal.developer.name %></h2>
+                  <br>
+                  <p><strong>Email: </strong><%= proposal.developer.email %></p>
+                  <p><strong>GitHub: </strong><%= proposal.developer.github_url %></p>
+                  <p><strong>Age:</strong> <%= proposal.developer.age %></p> 
+                  <p><strong>Experience:</strong> <%= proposal.developer.years_experience %> years</p>
+                  <p><strong>Skills: </strong> 
+                  <%= proposal.developer.skills %></p>
+            </div>      
+              <div class="star-div col-3">
+                <% if proposal.developer.rating_avg %>
+                  <div class="star-ratings-css" title="<%=(proposal.developer.rating_avg * 2 / 10).round(1)%>"></div>
+                <% else %>
+                  <p>Rating: none<p>
+                <% end %>
+                  <p class="text-botton"><%= link_to "Comments", developer_ratings_path(current_developer) %></p>
+              </div>
           <p>Price: $<%= proposal.price %> | Estimated Date: <%= proposal.estimated_date %></p>
           <p><%= proposal.details %></p>
           <p></p>
@@ -104,6 +139,7 @@
           <%= link_to 'Accept Proposal', proposal_accept_proposal_path(proposal), class: 'btn btn-primary' if @offer.offer_open %>
         </div>
       </div> 
+
     <% end %>  
   <% end %>
 
