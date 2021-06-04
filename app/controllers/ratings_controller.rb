@@ -1,5 +1,10 @@
 class RatingsController < ApplicationController
 
+  def index
+    @developer = Developer.find(params[:developer_id])
+    @ratings = @developer.ratings
+  end
+  
   def new
     @rating = Rating.new
     @proposal = Proposal.find(params[:proposal_id])
@@ -34,11 +39,8 @@ class RatingsController < ApplicationController
     end
   end
 
-  
-
   def destroy
   end
-
 
   def rating_params
     params.require(:rating).permit(:rating, :comment)

@@ -27,7 +27,11 @@
         <% end %>
         <div class="card-product-infos">
           <h2><%= proposal.developer.name %> (<%= proposal.developer.email %>) </h2>
-           <p>Rating: <%= proposal.developer.rating_avg %> / 5.0</p>
+          <% if proposal.developer.rating_avg %>
+            <p>Rating: <%= link_to proposal.developer.rating_avg, developer_ratings_path(proposal.developer) %> / 5.0<p>
+          <% else %>
+            <p>Rating: <%= link_to 'none', developer_ratings_path(proposal.developer) %><p>
+          <% end %>
           <p>Github: <%= proposal.developer.github_url %></p>
           <p>Experience: <%= proposal.developer.years_experience %> years</p>
           <p>Skills: <%= proposal.developer.skills %></p>
@@ -54,7 +58,11 @@
         <% end %>
         <div class="card-product-infos">
           <h2><%= proposal.developer.name %> (<%= proposal.developer.email %>) </h2>
-          <p>Rating: <%= proposal.developer.rating_avg %> / 5.0</p>
+          <% if proposal.developer.rating_avg %>
+            <p>Rating: <%= link_to proposal.developer.rating_avg, developer_ratings_path(proposal.developer) %> / 5.0<p>
+          <% else %>
+            <p>Rating: <%= link_to 'none', developer_ratings_path(proposal.developer) %><p>
+          <% end %>
           <p>Github: <%= proposal.developer.github_url %></p>
           <p>Experience: <%= proposal.developer.years_experience %> years</p>
           <p>Skills: <%= proposal.developer.skills %></p>
@@ -81,7 +89,11 @@
         <% end %>
         <div class="card-product-infos">
           <h2><%= proposal.developer.name %> (<%= proposal.developer.email %>) </h2>
-          <p>Rating: <%= proposal.developer.rating_avg %> / 5.0</p>
+          <% if proposal.developer.rating_avg %>
+            <p>Rating: <%= link_to proposal.developer.rating_avg, developer_ratings_path(proposal.developer) %> / 5.0<p>
+          <% else %>
+            <p>Rating: <%= link_to 'none', developer_ratings_path(proposal.developer) %><p>
+          <% end %>
           <p>Github: <%= proposal.developer.github_url %></p>
           <p>Experience: <%= proposal.developer.years_experience %> years</p>
           <p>Skills: <%= proposal.developer.skills %></p>
