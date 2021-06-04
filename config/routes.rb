@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-
   devise_for :customers, except: [:index]
 
   resources :customers, only: [:show] do
@@ -8,7 +7,9 @@ Rails.application.routes.draw do
   end
   
   devise_for :developers, except: [:edit, :update]
-  resources :developers, only: [:show]
+  resources :developers, only: [:show] do
+    resources :ratings, only: [:index]
+  end
   
   get 'offer/:id/close_offer', to: 'offers#close_offer', as: 'close_offer'
   resources :offers, only: [:destroy] do
