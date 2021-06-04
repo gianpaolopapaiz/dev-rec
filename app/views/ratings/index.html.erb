@@ -1,5 +1,11 @@
 <div class="container">
-<p class='mt-3'><%= link_to 'Back to dashboard',customer_path(current_customer) %></p>
+
+<% if customer_signed_in? %>
+  <p class='mt-3'><%= link_to 'Back to dashboard', customer_path(current_customer) %></p>
+<% elsif developer_signed_in? %>
+  <p class='mt-3'><%= link_to 'Back to dashboard', developer_path(current_developer) %></p>
+<% end %>
+
  <div class="card-product mt-2">
     <% if @developer.photo.attached? %>
       <%= cl_image_tag @developer.photo.key, crop: :fill %>
@@ -16,10 +22,10 @@
       <p>Skills: 
       <%= @developer.skills %></p>
       <% if @developer.rating_avg %>
-            <p>Rating: <%= link_to @developer.rating_avg, developer_ratings_path(@developer) %> / 5.0<p>
-          <% else %>
-            <p>Rating: <%= link_to 'none', developer_ratings_path(proposal.developer) %><p>
-          <% end %>
+        <p>Rating: <%= link_to @developer.rating_avg, developer_ratings_path(@developer) %> / 5.0<p>
+      <% else %>
+        <p>Rating: none<p>
+      <% end %>
     </div>
   </div>
   

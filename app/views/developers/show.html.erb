@@ -19,7 +19,11 @@
       <p><strong>Skills: </strong> 
       <%= current_developer.skills %></p>
       <p><strong>Rating: </strong> 
-      <%= current_developer.rating_avg %> / 5.0</p>
+      <% if current_developer.rating_avg %>
+        <p>Rating: <%= link_to current_developer.rating_avg, developer_ratings_path(current_developer) %> / 5.0<p>
+      <% else %>
+        <p>Rating: none<p>
+      <% end %>
     </div>
   </div>
   <p class="text-right">
