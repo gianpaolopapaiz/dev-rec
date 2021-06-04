@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container flex-grow-1">
   <br>
   <br>
   <h1> Developer Dashboard</h1>
@@ -10,26 +10,34 @@
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> 
     <% end %>
     <div class="card-product-infos">
-      <h2><%= current_developer.name %></h2>
-      <br>
-      <p><strong>Email: </strong><%= current_developer.email %></p>
-      <p><strong>GitHub: </strong><%= current_developer.github_url %></p>
-      <p><strong>Age:</strong> <%= current_developer.age %></p> 
-      <p><strong>Experience:</strong> <%= current_developer.years_experience %> years</p>
-      <p><strong>Skills: </strong> 
-      <%= current_developer.skills %></p>
+
+      <div class="card-linha row">
+
+        <div class="texto-linha col-7">
+              <h2><%= current_developer.name %></h2>
+              <br>
+              <p><strong>Email: </strong><%= current_developer.email %></p>
+              <p><strong>GitHub: </strong><%= current_developer.github_url %></p>
+              <p><strong>Age:</strong> <%= current_developer.age %></p> 
+              <p><strong>Experience:</strong> <%= current_developer.years_experience %> years</p>
+              <p><strong>Skills: </strong> 
+              <%= current_developer.skills %></p>
+        </div>      
+            <div class="star-div col-3">
+              <% if current_developer.rating_avg %>
+                <div class="star-ratings-css" title="<%=(current_developer.rating_avg * 2 / 10).round(1)%>"></div>
+              <% else %>
+                <p>Rating: none<p>
+              <% end %>
+                <p class="text-botton"><%= link_to "Comments", developer_ratings_path(current_developer) %></p>
+            </div>
+            <div class="button-div col-2">
+              <%= link_to 'Edit', edit_developer_registration_path(current_developer), class: 'btn btn-secondary btn-sm'  %>
+              <%= link_to 'Logout', destroy_developer_session_path, method: :delete, class: 'btn btn-secondary btn-sm'  %>
+            </div>
+      </div>
     </div>
-      <% if current_developer.rating_avg %>
-        <div class="star-ratings-css" title="<%=(current_developer.rating_avg * 2 / 10).round(1)%>"></div>
-      <% else %>
-        <p>Rating: none<p>
-      <% end %>
-        <p><%= link_to "Comments", developer_ratings_path(current_developer) %></p>
   </div>
-  <p class="text-right">
-    <%= link_to 'Edit', edit_developer_registration_path(current_developer), class: 'btn btn-secondary btn-sm'  %>
-    <%= link_to 'Logout', destroy_developer_session_path, method: :delete, class: 'btn btn-secondary btn-sm'  %>
-  </p>  
   <br>
   <br>
   <h3>My proposals:</h3>
