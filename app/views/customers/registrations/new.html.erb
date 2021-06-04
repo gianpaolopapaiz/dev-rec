@@ -1,9 +1,11 @@
-<div class="signup">
-  <div class="container pt-5">
-    <div class="signup-int">
-      <div class="row justify-content-center">
-        <div class="col-10 col-md-6 col-lg-4 p-4" style="background-color: white">
-          <h2 class="text-center mb-5"><strong>CUSTOMER - Sign up</strong></h2>
+<div class="signup flex-grow-1 mb-0">
+  <div class="container h-100 my-auto">
+    <div class="signup-int h-100 p-0">
+      <div class="row justify-content-center align-items-center h-100 py-5">
+        <div class="col-10 col-md-6 col-lg-6 p-4" style="background-color: white">
+
+          <h2 class="text-center"><strong>CUSTOMER</strong></h2>
+          <h2 class="text-center mb-3"><strong>Sign Up</strong></h2>
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= f.error_notification %>
 
