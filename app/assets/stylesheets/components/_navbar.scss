@@ -1,10 +1,9 @@
+
 .navbar-lewagon {
   justify-content: space-between;
-  background-color: rgba(255, 68, 0, 0.5);
-  padding: 0px 150px;
-  h1 {
-    font-family: 'Share Tech Mono', monospace;
-  }
+  background-color: rgba(220, 220, 220, 0.883);
+  height: 40px;
+  padding: 0px 80px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -14,14 +13,14 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 35px;
 }
 
 .fa-home {
   color: black;
   text-shadow: 1px 1px 2px gray;
   padding: 0px 50px;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .avatar {
@@ -32,6 +31,5 @@
   font-weight: bold;
   opacity: 1;
   transition: opacity 0.3s ease;
-  font-family: 'Share Tech Mono', monospace !important;
 }
 

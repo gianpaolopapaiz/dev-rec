@@ -12,17 +12,17 @@
     <div class="card-product-infos">
       <h2><%= current_developer.name %></h2>
       <br>
-      <p>Email:<%= current_developer.email %></p>
-      <p>GitHub: <%= current_developer.github_url %></p>
-      <p>Age: <%= current_developer.age %></p> 
-      <p>Experience: <%= current_developer.years_experience %> years</p>
-      <p>Skills: 
+      <p><strong>Email: </strong><%= current_developer.email %></p>
+      <p><strong>GitHub: </strong><%= current_developer.github_url %></p>
+      <p><strong>Age:</strong> <%= current_developer.age %></p> 
+      <p><strong>Experience:</strong> <%= current_developer.years_experience %> years</p>
+      <p><strong>Skills: </strong> 
       <%= current_developer.skills %></p>
-      <p>Rating Average: 
-      <%= current_developer.rating_avg %></p>
+      <p><strong>Rating: </strong> 
+      <%= current_developer.rating_avg %> / 5.0</p>
     </div>
   </div>
-  <p class="text-right" >
+  <p class="text-right">
     <%= link_to 'Edit', edit_developer_registration_path(current_developer), class: 'btn btn-secondary btn-sm'  %>
     <%= link_to 'Logout', destroy_developer_session_path, method: :delete, class: 'btn btn-secondary btn-sm'  %>
   </p>  
@@ -64,7 +64,7 @@
         class: 'form-control w-25',
         placeholder: 'Search...'
       %>
-      <%= submit_tag "Search", class: 'btn btn-primary' %>
+      <%= submit_tag "Search", class: 'btn btn-primary ' %>
       <% if @query.present? %>
         <span class='ml-2'> Filtered by: "<strong><%= @query %></strong>" <%= link_to 'X', developer_path(current_developer)  %></span>
       <% end %>
