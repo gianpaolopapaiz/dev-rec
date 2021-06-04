@@ -8,16 +8,24 @@
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> 
     <% end %>
     <div class="card-product-infos">
-      <h2><%= current_customer.name %></h2>
-      <br>
-      <p>Email:<%= current_customer.email %></p>
-      <p>Phone: <%= current_customer.phone %></p>
+      <div class="card-linha row">
+        <div class="texto-linha col-10">
+
+
+          <h2><%= current_customer.name %></h2>
+          <br>
+          <p>Email:<%= current_customer.email %></p>
+          <p>Phone: <%= current_customer.phone %></p>
+
+        </div>
+        <div class="button-div col-2">
+          <%= link_to 'Edit', edit_customer_registration_path(current_customer), class: 'btn btn-secondary btn-sm'  %>
+          <%= link_to 'Logout', destroy_customer_session_path, method: :delete, class: 'btn btn-secondary btn-sm'  %>
+  
+        </div>
+      </div>
     </div>
   </div>
-  <p class="text-right" >
-      <%= link_to 'Edit', edit_customer_registration_path(current_customer), class: 'btn btn-secondary btn-sm'  %>
-      <%= link_to 'Logout', destroy_customer_session_path, method: :delete, class: 'btn btn-secondary btn-sm'  %>
-  </p>
  
   <h3>My offers</h3>
   
@@ -33,9 +41,9 @@
       <thead>
         <tr>
           <th scope="col">Title</th>
-          <th scope="col">Target Date</th>
-          <th scope="col">Proposals</th>
-          <th scope="col">Options</th>
+          <th class="option-table", scope="col">Target Date</th>
+          <th class="option-table", scope="col">Proposals</th>
+          <th class="option-table", scope="col">Options</th>
         </tr>
       </thead>
       <tbody>
@@ -58,9 +66,9 @@
       <thead>
         <tr>
           <th scope="col">Title</th>
-          <th scope="col">Target Date</th>
-          <th scope="col">Proposals</th>
-          <th scope="col">Options</th>
+          <th class="option-table", scope="col">Target Date</th>
+          <th class="option-table", scope="col">Proposals</th>
+          <th class="option-table", scope="col">Options</th>
         </tr>
       </thead>
       <tbody>
@@ -83,9 +91,9 @@
       <thead>
         <tr>
           <th scope="col">Title</th>
-          <th scope="col">Target Date</th>
-          <th scope="col">Proposals</th>
-          <th scope="col">Options</th>
+          <th class="option-table", scope="col">Target Date</th>
+          <th class="option-table", scope="col">Proposals</th>
+          <th class="option-table", scope="col">Options</th>
         </tr>
       </thead>
       <tbody>
