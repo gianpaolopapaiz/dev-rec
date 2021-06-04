@@ -1,5 +1,5 @@
 <div class="container flex-grow-1">
-  <div class="card-product">
+  <div class="card-product mt-5">
     <% if @developer.photo.attached? %>
         <%= cl_image_tag @developer.photo.key, crop: :fill %>
     <% else %>
