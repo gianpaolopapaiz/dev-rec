@@ -7,27 +7,36 @@
 <% end %>
 
  <div class="card-product mt-2">
-    <% if @developer.photo.attached? %>
-      <%= cl_image_tag @developer.photo.key, crop: :fill %>
-    <% else %>
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> 
-    <% end %>
-    <div class="card-product-infos">
-      <h2><%= @developer.name %></h2>
-      <br>
-      <p>Email:<%= @developer.email %></p>
-      <p>GitHub: <%= @developer.github_url %></p>
-      <p>Age: <%= @developer.age %></p> 
-      <p>Experience: <%= @developer.years_experience %> years</p>
-      <p>Skills: 
-      <%= @developer.skills %></p>
-      <% if @developer.rating_avg %>
-        <p>Rating: <%= link_to @developer.rating_avg, developer_ratings_path(@developer) %> / 5.0<p>
-      <% else %>
-        <p>Rating: none<p>
-      <% end %>
+
+        <% if @developer.photo.attached? %>
+          <%= cl_image_tag @developer.photo.key, crop: :fill %>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> 
+        <% end %>
+        <div class="card-product-infos">
+          <div class="card-linha row">
+            <div class="texto-linha col-7">
+              <h2><%= @developer.name %></h2>
+              <br>
+              <p><strong>Email: </strong><%= @developer.email %></p>
+              <p><strong>GitHub: </strong><%= @developer.github_url %></p>
+              <p><strong>Age:</strong> <%= @developer.age %></p> 
+              <p><strong>Experience:</strong> <%= @developer.years_experience %> years</p>
+              <p><strong>Skills: </strong> 
+              <%= @developer.skills %></p>
+            </div>      
+            <div class="star-div col-3">
+              <% if @developer.rating_avg %>
+                <div class="star-ratings-css" title="<%=(@developer.rating_avg * 2 / 10).round(1)%>"></div>
+              <% else %>
+                <p>Rating: none<p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div> 
     </div>
-  </div>
+
   
   
   <h3>All Ratings(<%= @ratings.length %>):</h3>
