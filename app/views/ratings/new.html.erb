@@ -1,5 +1,5 @@
 <div class="container flex-grow-1">
-  <div class="card-product">
+  <div class="card-product mt-5">
     <% if @developer.photo.attached? %>
         <%= cl_image_tag @developer.photo.key, crop: :fill %>
     <% else %>
@@ -17,13 +17,14 @@
     </div>
   </div>
   
-  <div class="col-10 col-md-6 col-lg-6 p-4" style="background-color: white">
-    <h2>Rate the Developer</h2>
-    <div class="col-4 w-100">
+  <div class="p-4 login-int mt-5" style="background-color: white; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
+     <h2 class="text-center mb-3 "><strong>Rate Developer</strong></h2>
+    <div class="w-100">
       <%= simple_form_for [@proposal, @rating] do |f| %>
         <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>  
         <%= f.input :comment %>
         <%= f.button :submit, "Rate", class:"btn btn-primary w-100"%>
+        <p class='mt-2'><%= link_to "Back", :back %></p>
       <% end %>
     </div>
   </div>
