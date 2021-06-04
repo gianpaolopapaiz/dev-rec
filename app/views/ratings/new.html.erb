@@ -1,28 +1,31 @@
-<div class="container">
+<div class="container flex-grow-1">
   <div class="card-product">
-  <% if @developer.photo.attached? %>
-      <%= cl_image_tag @developer.photo.key, crop: :fill %>
-  <% else %>
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> 
-  <% end %>
-  <div class="card-product-infos">
-      <h2><%= @developer.name %></h2>
-      <br>
-      <p>Email:<%= @developer.email %></p>
-      <p>GitHub: <%= @developer.github_url %></p>
-      <p>Age: <%= @developer.age %></p> 
-      <p>Experience: <%= @developer.years_experience %> years</p>
-      <p>Skills: 
-      <%= @developer.skills %></p>
+    <% if @developer.photo.attached? %>
+        <%= cl_image_tag @developer.photo.key, crop: :fill %>
+    <% else %>
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> 
+    <% end %>
+    <div class="card-product-infos">
+        <h2><%= @developer.name %></h2>
+        <br>
+        <p>Email:<%= @developer.email %></p>
+        <p>GitHub: <%= @developer.github_url %></p>
+        <p>Age: <%= @developer.age %></p> 
+        <p>Experience: <%= @developer.years_experience %> years</p>
+        <p>Skills: 
+        <%= @developer.skills %></p>
+    </div>
   </div>
+  
+  <div class="col-10 col-md-6 col-lg-6 p-4" style="background-color: white">
+    <h2>Rate the Developer</h2>
+    <div class="col-4 w-100">
+      <%= simple_form_for [@proposal, @rating] do |f| %>
+        <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>  
+        <%= f.input :comment %>
+        <%= f.button :submit, "Rate", class:"btn btn-primary w-100"%>
+      <% end %>
+    </div>
   </div>
 
-  <h2>Rate the Developer</h2>
-  <div class="col-4">
-    <%= simple_form_for [@proposal, @rating] do |f| %>
-    <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>  
-    <%= f.input :comment %>
-    <%= f.button :submit, "Rate", class:"btn btn-primary"%>
-    <% end %>
-  </div>
 </div>
