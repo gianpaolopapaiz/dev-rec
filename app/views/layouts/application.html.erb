@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html >
   <head>
     <title>DevRec</title>
     <%= csrf_meta_tags %>
@@ -11,7 +11,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body class='d-flex flex-column' style="height: 100vh;">
       <%= render 'shared/navbar' %>
       <%= yield %>
       <%= render 'shared/footer' %>

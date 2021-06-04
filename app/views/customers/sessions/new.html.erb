@@ -1,10 +1,11 @@
-<div class="login">
-  <div class="container pt-5">
-    <div class="login-int">
-      <div class="row justify-content-center">
-        <div class="col-10 col-md-6 col-lg-4" style="background-color: white">
+<div class="login flex-grow-1">
+  <div class="container h-100 my-auto">
+    <div class="login-int h-100 p-0">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="col-10 col-md-6 col-lg-4 p-4" style="background-color: white">
      
-            <h2 class="text-center mb-5"><strong>CUSTOMER Log in</strong></h2>
+            <h2 class="text-center"><strong>CUSTOMER</strong></h2>
+            <h2 class="text-center mb-3"><strong>Log in</strong></h2>
             <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="form-inputs">
                 <%= f.input :email,
