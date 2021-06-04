@@ -24,6 +24,7 @@
         <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>  
         <%= f.input :comment %>
         <%= f.button :submit, "Rate", class:"btn btn-primary w-100"%>
+        <p class='mt-2'><%= link_to "Back", :back %></p>
       <% end %>
     </div>
   </div>
