@@ -18,13 +18,13 @@
       <p><strong>Experience:</strong> <%= current_developer.years_experience %> years</p>
       <p><strong>Skills: </strong> 
       <%= current_developer.skills %></p>
-      <p><strong>Rating: </strong> 
+    </div>
       <% if current_developer.rating_avg %>
-        <p>Rating: <%= link_to current_developer.rating_avg, developer_ratings_path(current_developer) %> / 5.0<p>
+        <div class="star-ratings-css" title="<%=(current_developer.rating_avg * 2 / 10).round(1)%>"></div>
       <% else %>
         <p>Rating: none<p>
       <% end %>
-    </div>
+        <p><%= link_to "Comments", developer_ratings_path(current_developer) %></p>
   </div>
   <p class="text-right">
     <%= link_to 'Edit', edit_developer_registration_path(current_developer), class: 'btn btn-secondary btn-sm'  %>
