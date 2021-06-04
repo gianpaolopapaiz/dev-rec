@@ -17,9 +17,9 @@
     </div>
   </div>
   
-  <div class="col-10 col-md-6 col-lg-6 p-4" style="background-color: white">
-    <h2>Rate the Developer</h2>
-    <div class="col-4 w-100">
+  <div class="p-4 login-int mt-5" style="background-color: white; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
+     <h2 class="text-center mb-3 "><strong>Rate Developer</strong></h2>
+    <div class="w-100">
       <%= simple_form_for [@proposal, @rating] do |f| %>
         <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>  
         <%= f.input :comment %>
